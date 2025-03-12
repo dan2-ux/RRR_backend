@@ -7,6 +7,8 @@ import cors from 'cors'
 
 const app = express()
 
+const port = process.env.PORT || 1000;
+
 app.get('/', (req,res) => {
     if(!Remider){
         return res.status(404).send("<h1>Error</h1>")
@@ -21,8 +23,8 @@ app.use('/data/', Route)
 
 mongoose.connect(MONGO_URL)
         .then(() => {
-            app.listen(PORT, () => {
-                console.log(`RUNNING AT ${PORT}`)
+            app.listen(port, () => {
+                console.log(`RUNNING AT ${port}`)
             })
         })
         .catch((e) => {
